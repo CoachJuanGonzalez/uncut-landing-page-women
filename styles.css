@@ -1254,6 +1254,21 @@ p {
     color: var(--gold);
 }
 
+.footer-powered {
+    margin-top: 20px;
+    font-size: 0.8rem;
+}
+
+.footer-powered a {
+    color: var(--gray-medium);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.footer-powered a:hover {
+    color: var(--gold);
+}
+
 /* ========================================
    EMAIL MODAL (Exit Intent)
    ======================================== */
