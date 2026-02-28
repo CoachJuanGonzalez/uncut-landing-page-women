@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git init:*)",
+      "Bash(git remote add:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nInitial commit: UNCUT Sacred Warrior Oil women''s landing page\n\nComplete cinematic landing page with conversion-optimized structure:\n\n- Hero section with \"Recovery is Power\" messaging\n- Identity differentiation \\(\"This Isn 't Skincare\"\\)\n- 6-benefit grid prioritizing ritual and performance\n- 3-step daily ritual visualization\n- Performance + longevity positioning\n- Ingredients transparency with athletic focus\n- Social proof from female fighters\n- Exit-intent email capture modal\n- Repeat purchase psychology driver\n- Influencer attribution system \\(code: ELLA10\\)\n\nTechnical features:\n- Fully responsive mobile-first design\n- Scroll animations and parallax effects\n- Exit-intent email capture\n- Analytics tracking ready \\(GA4, Meta Pixel\\)\n- SEO optimized with semantic HTML\n- WCAG AA accessibility compliant\n\nBrand alignment:\n- Dark cinematic aesthetic with gold accents\n- Cinzel serif + Montserrat sans-serif typography\n- Performance over beauty messaging\n- Athletic discipline as core identity\n\nCo-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git branch:*)",
+      "Bash(git push:*)"
+    ]
+  }
+}

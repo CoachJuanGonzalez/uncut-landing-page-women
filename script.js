@@ -161,25 +161,91 @@ document.addEventListener('keydown', (e) => {
 // Handle email form submission
 const emailForm = document.querySelector('.email-form');
 if (emailForm) {
-    emailForm.addEventListener('submit', (e) => {
+    emailForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
         const emailInput = emailForm.querySelector('input[type="email"]');
         const email = emailInput.value;
 
-        // Here you would integrate with your email service (e.g., Mailchimp, ConvertKit, etc.)
+        // ========================================
+        // OPTION 1: ConvertKit Integration
+        // ========================================
+        // Uncomment and replace with your ConvertKit Form ID and API Key
+        /*
+        try {
+            const response = await fetch('https://api.convertkit.com/v3/forms/YOUR_FORM_ID/subscribe', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    api_key: 'YOUR_PUBLIC_API_KEY',
+                    email: email,
+                    tags: ['landing_page_women', 'exit_intent']
+                })
+            });
+
+            if (response.ok) {
+                // Track email capture
+                trackEvent('Lead', 'email_capture', 'exit_intent');
+                if (typeof fbq !== 'undefined') fbq('track', 'Lead');
+
+                showSuccessMessage();
+            } else {
+                showErrorMessage();
+            }
+        } catch (error) {
+            console.error('Email capture error:', error);
+            showErrorMessage();
+        }
+        */
+
+        // ========================================
+        // OPTION 2: Mailchimp Integration
+        // ========================================
+        // Uncomment and replace with your Mailchimp details
+        /*
+        try {
+            const response = await fetch('https://YOUR-DOMAIN.us1.list-manage.com/subscribe/post-json?u=XXX&id=XXX', {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ EMAIL: email })
+            });
+
+            // Track email capture
+            trackEvent('Lead', 'email_capture', 'exit_intent');
+            if (typeof fbq !== 'undefined') fbq('track', 'Lead');
+
+            showSuccessMessage();
+        } catch (error) {
+            console.error('Email capture error:', error);
+            showErrorMessage();
+        }
+        */
+
+        // ========================================
+        // TEMPORARY: Log email (remove in production)
+        // ========================================
         console.log('Email captured:', email);
 
-        // Show success message
-        emailForm.innerHTML = `
-            <div style="padding: 20px; text-align: center;">
-                <h3 style="color: var(--gold); margin-bottom: 15px;">Thank You!</h3>
-                <p style="color: var(--cream);">Your recovery guide is on its way.<br>Check your inbox in the next few minutes.</p>
-            </div>
-        `;
+        // Track email capture
+        trackEvent('Lead', 'email_capture', 'exit_intent');
+        if (typeof fbq !== 'undefined') fbq('track', 'Lead');
 
-        // Close modal after 3 seconds
-        setTimeout(hideEmailModal, 3000);
+        showSuccessMessage();
+
+        function showSuccessMessage() {
+            emailForm.innerHTML = `
+                <div style="padding: 20px; text-align: center;">
+                    <h3 style="color: var(--gold); margin-bottom: 15px;">Welcome, Warrior! ✊</h3>
+                    <p style="color: var(--cream);">Your recovery guide is on its way.<br>Check your inbox in 2 minutes.</p>
+                </div>
+            `;
+            setTimeout(hideEmailModal, 3000);
+        }
+
+        function showErrorMessage() {
+            alert('Something went wrong. Please try again or email us directly at support@uncut-ritual.com');
+        }
     });
 }
 
@@ -422,3 +488,128 @@ setInterval(() => {
         trackEvent('Engagement', 'time_on_page', '2_minutes');
     }
 }, 30000);
+
+// ========================================
+// FAQ ACCORDION FUNCTIONALITY
+// ========================================
+document.querySelectorAll('.faq-question').forEach(button => {
+    button.addEventListener('click', () => {
+        const faqItem = button.parentElement;
+        const answer = faqItem.querySelector('.faq-answer');
+        const isOpen = faqItem.classList.contains('active');
+
+        // Close all other FAQs
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.classList.remove('active');
+            item.querySelector('.faq-answer').style.maxHeight = '0';
+        });
+
+        // Toggle current FAQ
+        if (!isOpen) {
+            faqItem.classList.add('active');
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+
+            // Track FAQ click
+            trackEvent('FAQ', 'expand', button.textContent);
+        }
+    });
+});
+
+// ========================================
+// COOKIE CONSENT BANNER
+// ========================================
+const cookieConsent = document.getElementById('cookieConsent');
+const acceptCookies = document.getElementById('acceptCookies');
+const declineCookies = document.getElementById('declineCookies');
+
+// Check if user has already made a choice
+const cookieChoice = localStorage.getItem('cookieConsent');
+
+if (!cookieChoice) {
+    // Show banner after 2 seconds
+    setTimeout(() => {
+        if (cookieConsent) cookieConsent.classList.add('active');
+    }, 2000);
+}
+
+if (acceptCookies) {
+    acceptCookies.addEventListener('click', () => {
+        localStorage.setItem('cookieConsent', 'accepted');
+        cookieConsent.classList.remove('active');
+
+        // Initialize tracking scripts (GA4, Meta Pixel already loaded in head)
+        trackEvent('Cookie', 'consent', 'accepted');
+
+        // Enable any additional tracking if needed
+        console.log('Cookies accepted - Full tracking enabled');
+    });
+}
+
+if (declineCookies) {
+    declineCookies.addEventListener('click', () => {
+        localStorage.setItem('cookieConsent', 'declined');
+        cookieConsent.classList.remove('active');
+
+        // Disable analytics cookies (optional - implement based on privacy requirements)
+        console.log('Cookies declined - Essential cookies only');
+
+        // For GDPR/CCPA compliance, you may need to disable GA4 and Meta Pixel here
+        // This is a simplified version - consult legal requirements for your region
+    });
+}
+
+// ========================================
+// PRICING BUTTON TRACKING
+// ========================================
+document.querySelectorAll('[data-product]').forEach(button => {
+    button.addEventListener('click', (e) => {
+        const product = button.getAttribute('data-product');
+
+        // Track product selection
+        trackEvent('Product', 'select', product);
+
+        // Track with Meta Pixel
+        if (typeof fbq !== 'undefined') {
+            const prices = {
+                'single': 54,
+                'bundle-2': 97,
+                'bundle-3': 135,
+                'subscription': 46
+            };
+
+            fbq('track', 'AddToCart', {
+                content_name: product,
+                content_category: 'Recovery Oil',
+                value: prices[product] || 54,
+                currency: 'USD'
+            });
+        }
+
+        // Track with GA4
+        if (typeof gtag !== 'undefined') {
+            const prices = {
+                'single': 54,
+                'bundle-2': 97,
+                'bundle-3': 135,
+                'subscription': 46
+            };
+
+            gtag('event', 'add_to_cart', {
+                currency: 'USD',
+                value: prices[product] || 54,
+                items: [{
+                    item_id: product,
+                    item_name: 'Sacred Warrior Oil - ' + product,
+                    item_category: 'Recovery Oil',
+                    price: prices[product] || 54,
+                    quantity: 1
+                }]
+            });
+        }
+
+        console.log('Product selected:', product);
+
+        // In production, this would redirect to Shopify checkout
+        // window.location.href = `https://your-store.myshopify.com/cart/add?id=${productVariantId}`;
+    });
+});

@@ -812,6 +812,368 @@ p {
 }
 
 /* ========================================
+   MISSION SECTION
+   ======================================== */
+.mission-section {
+    background: linear-gradient(135deg, var(--secondary-black), var(--warm-black));
+    padding: var(--section-padding);
+}
+
+.mission-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.mission-statement {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: var(--gold);
+    text-align: center;
+    margin-bottom: 40px;
+    line-height: 1.4;
+}
+
+.mission-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--cream);
+    margin-bottom: 30px;
+}
+
+.mission-values {
+    background: var(--warm-black);
+    padding: 30px;
+    border-left: 4px solid var(--gold);
+    margin: 40px 0;
+}
+
+.mission-tagline {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--gold);
+    text-align: center;
+    margin-top: 50px;
+}
+
+/* ========================================
+   PRICING SECTION
+   ======================================== */
+.pricing-section {
+    background: var(--primary-black);
+    padding: var(--section-padding);
+}
+
+.pricing-subtitle {
+    text-align: center;
+    color: var(--gray-light);
+    font-size: 1.1rem;
+    margin-bottom: 60px;
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1100px;
+    margin: 0 auto 60px;
+}
+
+.price-card {
+    background: linear-gradient(135deg, var(--warm-black), var(--secondary-black));
+    padding: 40px 30px;
+    border-radius: 4px;
+    border: 1px solid rgba(201, 169, 97, 0.2);
+    position: relative;
+    transition: var(--transition);
+}
+
+.price-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-5px);
+}
+
+.price-card.featured {
+    border: 2px solid var(--gold);
+    background: linear-gradient(135deg, var(--secondary-black), var(--warm-black));
+}
+
+.price-card .badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gold);
+    color: var(--primary-black);
+    padding: 8px 25px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+}
+
+.price-card h3 {
+    font-size: 1.8rem;
+    color: var(--gold);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.price-card .price {
+    font-size: 3rem;
+    color: var(--white);
+    font-family: var(--font-display);
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.price-card .original-price {
+    font-size: 1.5rem;
+    color: var(--gray-medium);
+    text-decoration: line-through;
+    margin-left: 10px;
+}
+
+.price-card .save-badge {
+    text-align: center;
+    color: var(--bronze);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.price-subtitle {
+    text-align: center;
+    color: var(--gray-light);
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+}
+
+.price-features {
+    list-style: none;
+    margin: 30px 0;
+    padding: 0;
+}
+
+.price-features li {
+    color: var(--cream);
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+    padding-left: 25px;
+    position: relative;
+}
+
+.price-features li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 600;
+}
+
+.price-card button {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.price-shipping {
+    text-align: center;
+    color: var(--gray-medium);
+    font-size: 0.85rem;
+    margin-top: 15px;
+}
+
+.subscription-option {
+    max-width: 700px;
+    margin: 60px auto 0;
+}
+
+.subscription-card {
+    background: linear-gradient(135deg, var(--warm-black), var(--secondary-black));
+    padding: 40px;
+    border-radius: 4px;
+    border: 2px solid var(--bronze);
+}
+
+.subscription-card h3 {
+    font-size: 2rem;
+    color: var(--gold);
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.subscription-card > p {
+    text-align: center;
+    color: var(--cream);
+    margin-bottom: 30px;
+}
+
+.subscription-pricing {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.sub-price strong {
+    font-size: 2.5rem;
+    color: var(--white);
+    font-family: var(--font-display);
+}
+
+.sub-price span {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--gray-light);
+    margin-top: 5px;
+}
+
+.subscription-benefits {
+    list-style: none;
+    padding: 0;
+}
+
+.subscription-benefits li {
+    color: var(--cream);
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+}
+
+/* ========================================
+   FAQ SECTION
+   ======================================== */
+.faq-section {
+    background: var(--secondary-black);
+    padding: var(--section-padding);
+}
+
+.faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(201, 169, 97, 0.2);
+}
+
+.faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 25px 50px 25px 0;
+    text-align: left;
+    font-family: var(--font-body);
+    font-size: 1.2rem;
+    color: var(--gold);
+    cursor: pointer;
+    position: relative;
+    transition: var(--transition);
+}
+
+.faq-question:hover {
+    color: var(--white);
+}
+
+.faq-question::after {
+    content: "+";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    color: var(--gold);
+    transition: var(--transition);
+}
+
+.faq-item.active .faq-question::after {
+    content: "−";
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    padding: 0 20px;
+}
+
+.faq-answer p {
+    color: var(--cream);
+    line-height: 1.8;
+    padding-bottom: 25px;
+}
+
+.faq-answer a {
+    color: var(--gold);
+    text-decoration: underline;
+}
+
+.faq-answer a:hover {
+    color: var(--white);
+}
+
+/* ========================================
+   COOKIE CONSENT BANNER
+   ======================================== */
+.cookie-consent {
+    position: fixed;
+    bottom: -200px;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, var(--warm-black), var(--secondary-black));
+    border-top: 2px solid var(--gold);
+    padding: 25px 20px;
+    z-index: 9999;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
+    transition: bottom 0.4s ease-out;
+}
+
+.cookie-consent.active {
+    bottom: 0;
+}
+
+.cookie-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+.cookie-content p {
+    color: var(--cream);
+    font-size: 0.95rem;
+    margin: 0;
+    flex: 1;
+}
+
+.cookie-content a {
+    color: var(--gold);
+    text-decoration: underline;
+}
+
+.cookie-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.cookie-decline {
+    padding: 12px 30px;
+    background: transparent;
+    border: 1px solid var(--gray-medium);
+    color: var(--gray-light);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: var(--transition);
+}
+
+.cookie-decline:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+}
+
+/* ========================================
    FOOTER
    ======================================== */
 .footer {
@@ -1099,6 +1461,33 @@ p {
 
     .email-modal-content {
         padding: 40px 30px;
+    }
+
+    .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .subscription-pricing {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .subscription-pricing button {
+        width: 100%;
+    }
+
+    .cookie-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .cookie-buttons {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .cookie-buttons button {
+        width: 100%;
     }
 }
 
