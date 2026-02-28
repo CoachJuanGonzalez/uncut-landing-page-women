@@ -28,8 +28,8 @@
     --font-display: 'Cinzel', serif;
     --font-body: 'Montserrat', sans-serif;
 
-    /* Spacing */
-    --section-padding: 120px 20px;
+    /* Spacing (REDUCED for tighter feel) */
+    --section-padding: 70px 20px;
     --container-max: 1200px;
     --container-narrow: 800px;
 
@@ -816,43 +816,23 @@ p {
    ======================================== */
 .mission-section {
     background: linear-gradient(135deg, var(--secondary-black), var(--warm-black));
-    padding: var(--section-padding);
-}
-
-.mission-content {
-    max-width: 800px;
-    margin: 0 auto;
+    padding: 50px 20px;
+    text-align: center;
 }
 
 .mission-statement {
-    font-family: var(--font-display);
-    font-size: clamp(1.5rem, 3vw, 2rem);
-    color: var(--gold);
-    text-align: center;
-    margin-bottom: 40px;
-    line-height: 1.4;
-}
-
-.mission-content p {
-    font-size: 1.1rem;
-    line-height: 1.8;
+    font-size: clamp(1.1rem, 2.5vw, 1.3rem);
     color: var(--cream);
-    margin-bottom: 30px;
-}
-
-.mission-values {
-    background: var(--warm-black);
-    padding: 30px;
-    border-left: 4px solid var(--gold);
-    margin: 40px 0;
+    max-width: 800px;
+    margin: 0 auto 20px;
+    line-height: 1.6;
 }
 
 .mission-tagline {
     font-family: var(--font-display);
-    font-size: 1.5rem;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
     color: var(--gold);
-    text-align: center;
-    margin-top: 50px;
+    letter-spacing: 0.05em;
 }
 
 /* ========================================
@@ -866,8 +846,8 @@ p {
 .pricing-subtitle {
     text-align: center;
     color: var(--gray-light);
-    font-size: 1.1rem;
-    margin-bottom: 60px;
+    font-size: 1rem;
+    margin-bottom: 40px;
 }
 
 .pricing-grid {
@@ -880,7 +860,7 @@ p {
 
 .price-card {
     background: linear-gradient(135deg, var(--warm-black), var(--secondary-black));
-    padding: 40px 30px;
+    padding: 30px 25px;
     border-radius: 4px;
     border: 1px solid rgba(201, 169, 97, 0.2);
     position: relative;
